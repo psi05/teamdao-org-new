@@ -70,7 +70,7 @@ export default function Providers({ children }: { children: ReactNode }) {
 						],
 						{
 							appName: 'T.E.A.M DAO',
-							projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
+							projectId: '3bce97cc86ca95ddd9a7e2a2e61245e2',
 						}
 					),
 				})}
