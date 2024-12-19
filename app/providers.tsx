@@ -1,78 +1,31 @@
-// function Providers({ children }: { children: ReactNode }) {
-// 	return (
-// 		<QueryClientProvider client={queryClient}>
-// 			<OnchainKitProvider
-// 				apiKey={
-// 					'organizations/fbafc5ee-7fc4-4b9b-8d7a-f4b304b9cf9a/apiKeys/83189fe4-f2d8-4a0f-8a0e-0f0e4c9606fa'
-// 				}
-// 				chain={base}
-// 			>
-// 				<WagmiProvider
-// 					config={createConfig({
-// 						ssr: true,
-// 						chains: [base, mainnet, polygon, optimism, arbitrum],
-// 						connectors,
-// 						storage: createStorage({
-// 							storage: cookieStorage,
-// 						}),
-// 						transports: {
-// [mainnet.id]: http(),
-// [polygon.id]: http(),
-// [optimism.id]: http(),
-// [arbitrum.id]: http(),
-// [base.id]: http(),
-// 						},
-// 					})}
-// 				>
-// 					<RainbowKitProvider modalSize='compact' theme={darkTheme()}>
-// 						{children}
-// 					</RainbowKitProvider>
-// 				</WagmiProvider>
-// 			</OnchainKitProvider>
-// 		</QueryClientProvider>
-// 	);
-// }
-
 'use client';
 
 import { OnchainKitProvider } from '@coinbase/onchainkit';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactNode } from 'react';
-import { createConfig, http, WagmiProvider } from 'wagmi';
-import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
-import { coinbaseWallet } from 'wagmi/connectors';
-
-import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
-
-import { cookieStorage, createStorage } from 'wagmi';
-
 import '@coinbase/onchainkit/styles.css';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import {
+	connectorsForWallets,
+	darkTheme,
+	RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
 import '@rainbow-me/rainbowkit/styles.css';
 import {
+	coinbaseWallet,
 	metaMaskWallet,
 	rainbowWallet,
 	walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode } from 'react';
+import {
+	cookieStorage,
+	createConfig,
+	createStorage,
+	http,
+	WagmiProvider,
+} from 'wagmi';
+import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
 
 const queryClient = new QueryClient();
-
-// const connectors = connectorsForWallets(
-// 	[
-// 		{
-// 			groupName: 'Recommended',
-// 			wallets: [rainbowWallet, walletConnectWallet],
-// 		},
-// 		{
-// 			groupName: 'Other Wallets',
-// 			wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
-// 		},
-// 	],
-// 	{
-// 		appName: 'My RainbowKit App',
-// 		projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID as string,
-// 	}
-// );
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
@@ -83,8 +36,6 @@ export default function Providers({ children }: { children: ReactNode }) {
 				config={{
 					wallet: {
 						display: 'modal',
-						termsUrl: 'https://...',
-						privacyUrl: 'https://...',
 					},
 				}}
 			>
@@ -92,11 +43,9 @@ export default function Providers({ children }: { children: ReactNode }) {
 					config={createConfig({
 						ssr: true,
 						chains: [arbitrum, base, mainnet, optimism, polygon],
-						connectors: [
-							coinbaseWallet({
-								appName: 'onchainkit',
-							}),
-						],
+						storage: createStorage({
+							storage: cookieStorage,
+						}),
 						transports: {
 							[arbitrum.id]: http(),
 							[base.id]: http(),
@@ -104,9 +53,27 @@ export default function Providers({ children }: { children: ReactNode }) {
 							[optimism.id]: http(),
 							[polygon.id]: http(),
 						},
+						connectors: connectorsForWallets(
+							[
+								{
+									groupName: 'Recommended',
+									wallets: [rainbowWallet, walletConnectWallet],
+								},
+								{
+									groupName: 'Other Wallets',
+									wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
+								},
+							],
+							{
+								appName: 'T.E.A.M DAO',
+								projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
+							}
+						),
 					})}
 				>
-					{children}
+					<RainbowKitProvider modalSize='compact' theme={darkTheme()}>
+						{children}
+					</RainbowKitProvider>
 				</WagmiProvider>
 			</OnchainKitProvider>
 		</QueryClientProvider>

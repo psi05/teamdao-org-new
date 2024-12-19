@@ -1,7 +1,6 @@
 import Footer from '@/components/Shared/Layout/Footer/Footer';
 import Navbar from '@/components/Shared/Layout/Navbar/Navbar';
 
-import '@coinbase/onchainkit/styles.css';
 import './globals.css';
 
 import FONTS from '@/configurations/fonts';
