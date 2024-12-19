@@ -1,9 +1,11 @@
-"use client";
-import NFTCards from "@/components/Shared/NFTCards";
-import { nftCardsItems } from "@/data/nftCardsItems";
-import dynamic from "next/dynamic";
-import { v4 as uuid } from "uuid";
-const Carroussel = dynamic(() => import("@/components/Shared/Carousel"), {
+'use client';
+
+import NFTCards from '@/components/Shared/NFTCards';
+import { nftCardsItems } from '@/sources/nftCardsItems';
+import dynamic from 'next/dynamic';
+import { v4 as uuid } from 'uuid';
+
+const Carroussel = dynamic(() => import('@/components/Shared/Carousel'), {
 	ssr: false,
 });
 
@@ -23,13 +25,13 @@ const cards = nftCardsItems.map((card) => ({
 
 export default function NFTCarousel() {
 	return (
-		<div className="absolute bottom-14 flex w-full justify-center">
-			<div className="w-full lg:w-[500px]">
+		<div className='absolute bottom-14 flex w-full justify-center'>
+			<div className='w-full lg:w-[500px]'>
 				<Carroussel
 					cards={cards}
-					height="500px"
-					width="100%"
-					margin="0 auto"
+					height='500px'
+					width='100%'
+					margin='0 auto'
 					offset={2}
 					showArrows={false}
 				/>

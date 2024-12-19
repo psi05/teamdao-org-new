@@ -4,36 +4,15 @@ import Navbar from '@/components/Shared/Layout/Navbar/Navbar';
 import '@coinbase/onchainkit/styles.css';
 import './globals.css';
 
+import FONTS from '@/configurations/fonts';
+import METADATA from '@/configurations/metadata';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import Script from 'next/script';
 import AnimatedCursor from 'react-animated-cursor';
 import Providers from './providers';
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
-	title: 'T.E.A.M DAO | Decentralized Autonomous Organization',
-	description:
-		'T.E.A.M DAO is a gaming/sports ecosystem designed for sports teams of players encompassing, esports gaming, athletic sports, trading for competition. Our flagship platform is TEAMwallet which is governed and powered by the $TEAM token to pay for services such as Sniper, Bridge, Trade, purchase game credits, wallet subscriptions.',
-	keywords:
-		'T.E.A.M DAO, decentralized autonomous organization, blockchain, crypto',
-	openGraph: {
-		title: 'T.E.A.M DAO',
-		description:
-			'T.E.A.M DAO is a gaming/sports ecosystem designed for sports teams of players encompassing, esports gaming, athletic sports, trading for competition. Our flagship platform is TEAMwallet which is governed and powered by the $TEAM token to pay for services such as Sniper, Bridge, Trade, purchase game credits, wallet subscriptions',
-		url: 'https://teamdao.org',
-		images: '/logo.png',
-	},
-	twitter: {
-		card: 'summary_large_image',
-		title: 'T.E.A.M DAO',
-		description:
-			'T.E.A.M DAO is a gaming/sports ecosystem designed for sports teams of players encompassing, esports gaming, athletic sports, trading for competition. Our flagship platform is TEAMwallet which is governed and powered by the $TEAM token to pay for services such as Sniper, Bridge, Trade, purchase game credits, wallet subscriptions',
-		images: '/logo.png',
-	},
-};
+export const metadata: Metadata = METADATA;
 
 export default function RootLayout({
 	children,
@@ -42,34 +21,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<head>
-				<meta charSet='UTF-8' />
-				<meta
-					name='viewport'
-					content='width=device-width, initial-scale=1, maximum-scale=1'
-				/>
-				<meta
-					name='description'
-					content='T.E.A.M DAO is a gaming/sports ecosystem designed for sports teams of players encompassing, esports gaming, athletic sports, trading for competition. Our flagship platform is TEAMwallet which is governed and powered by the $TEAM token to pay for services such as Sniper, Bridge, Trade, purchase game credits, wallet subscriptions'
-				/>
-				<link rel='canonical' href='https://teamdao.org' />
-
-				<Script
-					strategy='lazyOnload'
-					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-				/>
-				<Script id='ga-script' strategy='lazyOnload'>
-					{`
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-						gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-							page_path: window.location.pathname,
-						});
-					`}
-				</Script>
-			</head>
-			<body className={`${inter.className} bg-black`}>
+			<body className={`${FONTS.alpha.className} bg-black`}>
 				<Providers>
 					<AnimatedCursor
 						innerSize={100}
@@ -101,6 +53,20 @@ export default function RootLayout({
 					{children}
 					<Footer />
 				</Providers>
+				<Script
+					id='google-tag-manager'
+					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+				/>
+				<Script id='google-analytics'>
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+							page_path: window.location.pathname,
+						});
+					`}
+				</Script>
 			</body>
 		</html>
 	);

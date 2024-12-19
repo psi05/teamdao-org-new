@@ -1,8 +1,8 @@
 'use client';
 
-import { navItems } from '@/data/navbarItems';
-import BlockscoutTokenInfo from '@/lib/Blockscout/Info/tokenInfo';
-import DexData from '@/lib/Dex/dexPairs';
+import BlockscoutTokenInfo from '@/libraries/Blockscout/Info/tokenInfo';
+import DexData from '@/libraries/Dex/dexPairs';
+import { navItems } from '@/sources/navbarItems';
 import NavbarItems from './NavbarItems';
 
 export default function Navbar() {

@@ -1,22 +1,3 @@
-// const queryClient = new QueryClient();
-
-// const connectors = connectorsForWallets(
-// 	[
-// 		{
-// 			groupName: 'Recommended',
-// 			wallets: [rainbowWallet, walletConnectWallet],
-// 		},
-// 		{
-// 			groupName: 'Other Wallets',
-// 			wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
-// 		},
-// 	],
-// 	{
-// 		appName: 'My RainbowKit App',
-// 		projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID as string,
-// 	}
-// );
-
 // function Providers({ children }: { children: ReactNode }) {
 // 	return (
 // 		<QueryClientProvider client={queryClient}>
@@ -52,39 +33,46 @@
 // 	);
 // }
 
-// export default Providers;
-
 'use client';
 
 import { OnchainKitProvider } from '@coinbase/onchainkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactNode } from 'react';
-import { WagmiProvider, createConfig, http } from 'wagmi';
+import { createConfig, http, WagmiProvider } from 'wagmi';
 import { arbitrum, base, mainnet, optimism, polygon } from 'wagmi/chains';
 import { coinbaseWallet } from 'wagmi/connectors';
 
-// import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { darkTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 
-// import type { ReactNode } from 'react';
-// import {
-// 	cookieStorage,
-// 	createConfig,
-// 	createStorage,
-// 	http,
-// 	WagmiProvider,
-// } from 'wagmi';
+import { cookieStorage, createStorage } from 'wagmi';
 
-// import '@coinbase/onchainkit/styles.css';
-// import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-// import '@rainbow-me/rainbowkit/styles.css';
-// import {
-// 	coinbaseWallet,
-// 	metaMaskWallet,
-// 	rainbowWallet,
-// 	walletConnectWallet,
-// } from '@rainbow-me/rainbowkit/wallets';
+import '@coinbase/onchainkit/styles.css';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import '@rainbow-me/rainbowkit/styles.css';
+import {
+	metaMaskWallet,
+	rainbowWallet,
+	walletConnectWallet,
+} from '@rainbow-me/rainbowkit/wallets';
 
 const queryClient = new QueryClient();
+
+// const connectors = connectorsForWallets(
+// 	[
+// 		{
+// 			groupName: 'Recommended',
+// 			wallets: [rainbowWallet, walletConnectWallet],
+// 		},
+// 		{
+// 			groupName: 'Other Wallets',
+// 			wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
+// 		},
+// 	],
+// 	{
+// 		appName: 'My RainbowKit App',
+// 		projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID as string,
+// 	}
+// );
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (

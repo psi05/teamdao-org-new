@@ -1,6 +1,6 @@
 'use client';
 
-import { navItems } from '@/data/navbarItems';
+import { navItems } from '@/sources/navbarItems';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowRight, Menu } from 'lucide-react';
 import MotionNumber from 'motion-number';
@@ -177,7 +177,6 @@ export default function NavbarItems({
 					</div>
 				</div>
 			</div>
-
 			<AnimatePresence>
 				{menuOpen && (
 					<motion.div
