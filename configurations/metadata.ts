@@ -17,7 +17,7 @@ const METADATA: Metadata = {
 	alternates: {
 		canonical: VARIABLES.canonical,
 	},
-	icons: `/images/${VARIABLES.icon}`,
+	icons: `/${VARIABLES.icon}`,
 	openGraph: {
 		type: 'website',
 		url: VARIABLES.canonical,
@@ -26,7 +26,7 @@ const METADATA: Metadata = {
 		siteName: VARIABLES.nameConfig,
 		images: [
 			{
-				url: `/images/${VARIABLES.image}`,
+				url: `/${VARIABLES.image}`,
 			},
 		],
 	},
@@ -37,7 +37,7 @@ const METADATA: Metadata = {
 		title: VARIABLES.name,
 		images: [
 			{
-				url: `/images/${VARIABLES.image}`,
+				url: `/${VARIABLES.image}`,
 			},
 		],
 	},

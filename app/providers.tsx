@@ -33,6 +33,12 @@ export default function Providers({ children }: { children: ReactNode }) {
 				apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
 				chain={base}
 				config={{
+					appearance: {
+						name: 'T.E.A.M',
+						logo: '/logo.png',
+						mode: 'dark',
+						theme: 'default',
+					},
 					wallet: {
 						display: 'modal',
 					},
