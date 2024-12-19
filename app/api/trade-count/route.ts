@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 export async function POST() {
 	const apiKey = process.env.BITQUERY_API_KEY;
@@ -31,6 +31,7 @@ export async function POST() {
       }
     }
   `;
+
 	const variables = {
 		network: 'base',
 		since: '2024-06-08T12:19:45.059Z',

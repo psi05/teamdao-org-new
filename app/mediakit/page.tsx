@@ -49,9 +49,7 @@ export default function Page() {
 									className='h-40 w-40 object-contain'
 								/>
 								<p className='tracking-tighter'>T.E.A.M LOGO</p>
-
 								<div className='py-2'></div>
-
 								<Link
 									href='assets/mediakit/mk-team-logo.png'
 									className='teamdao-btn hover:scale-110'
@@ -70,9 +68,7 @@ export default function Page() {
 								<p className='tracking-tighter'>
 									T.E.A.M LOGO Black Background
 								</p>
-
 								<div className='py-2'></div>
-
 								<Link
 									href='assets/mediakit/mk-team-logo-wbg.png'
 									className='teamdao-btn hover:scale-110'
@@ -80,7 +76,6 @@ export default function Page() {
 									Download
 								</Link>
 							</div>
-
 							<div className='flex flex-col items-center space-y-2'>
 								<Image
 									src='/assets/mediakit/mk-team-logo-round.png'
@@ -90,9 +85,7 @@ export default function Page() {
 									className='h-40 w-40 object-contain'
 								/>
 								<p className='tracking-tighter'>T.E.A.M LOGO Rounded</p>
-
 								<div className='py-2'></div>
-
 								<Link
 									href='assets/mediakit/mk-team-logo-round.png'
 									className='teamdao-btn hover:scale-110'

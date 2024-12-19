@@ -1,4 +1,4 @@
-import { ILog } from '@/types';
+import { ILog } from '@/globals';
 import useSWR from 'swr';
 import { z } from 'zod';
 

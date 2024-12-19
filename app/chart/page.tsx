@@ -35,7 +35,6 @@ export default function Page() {
 					className='opacity-80'
 				/>
 			</AnimatedCursor>
-
 			<PageTransition>
 				<Suspense>
 					<section className='main-container h-screen pb-36 pt-20'>

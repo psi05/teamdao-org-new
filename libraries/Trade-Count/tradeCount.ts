@@ -65,7 +65,6 @@ export default function TradeCount(): {
 		refreshInterval: 5000,
 	});
 
-	// Validate the data using the Zod schema
 	const parsedData = TradeCountSchema.safeParse(data);
 
 	return {

@@ -9,7 +9,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 dayjs.extend(relativeTime);
+
 dayjs.extend(updateLocale);
+
 dayjs.updateLocale('en', {
 	relativeTime: {
 		future: 'in %s',
@@ -27,16 +29,20 @@ dayjs.updateLocale('en', {
 		yy: '%d years',
 	},
 });
+
 class Utils {
 	formatDate(date?: string | number | Date) {
 		return dayjs(date).fromNow();
 	}
+
 	toWei(amount: string | number, decimal: number = 18) {
 		return parseInt(`${parseFloat(`${amount}`) * 10 ** decimal}`);
 	}
+
 	toEther(amount: string | number, decimal: number = 18) {
 		return parseFloat(`${amount}`) * 10 ** -decimal;
 	}
+
 	formatNumber(num: string | number, isDollar: boolean = false): string {
 		if (isDollar) return `${parseFloat(num.toString()).toFixed(2)}`;
 		const numStrs = parseFloat(num.toString()).toFixed(18).split('.');
@@ -60,17 +66,21 @@ class Utils {
 				}
 			}
 		}
+
 		const result =
 			numStrs.length === 2 && count === 2
 				? `${numStrs[0]}.${numStr}`
 				: parseFloat(num.toString()).toFixed(2);
 		return result;
 	}
+
 	formatTokenSymbol(symbol: string | null): string {
 		return symbol?.startsWith('$') ? symbol : `$${symbol}`;
 	}
 }
+
 export const utils = new Utils();
+
 export function shortenAddress(address: string): string {
 	if (!address) return '';
 	if (address.length <= 10) return address;

@@ -1,3 +1,5 @@
+'use client';
+
 import { utils } from '@/libraries/utils';
 import Link from 'next/link';
 import emoji from 'react-easy-emoji';
@@ -48,7 +50,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-
 			{(log?.type === 'ai' ||
 				log?.type === 'trade-team' ||
 				log?.type === 'pirate') && (
@@ -124,7 +125,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-
 			{log?.type === 'sniper' && (
 				<>
 					<div className='flex w-16 flex-grow justify-center text-center'>
@@ -186,7 +186,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-
 			{log?.type === 'bridge' && (
 				<>
 					<div className='flex w-16 flex-grow justify-center text-center'>
@@ -301,7 +300,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-
 			{log?.type === 'subscribe' && (
 				<>
 					<div className='flex w-16 flex-grow items-center justify-center'>
@@ -356,7 +354,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-
 			{log?.type === 'game-tapwar' && (
 				<>
 					<div className='flex w-16 flex-grow items-center justify-center'>

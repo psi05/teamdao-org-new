@@ -81,12 +81,6 @@ export default function Providers({ children }: { children: ReactNode }) {
 				apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
 				chain={base}
 				config={{
-					appearance: {
-						name: 'Your App Name', // Displayed in modal header
-						logo: 'https://your-logo.com', // Displayed in modal header
-						mode: 'auto', // 'light' | 'dark' | 'auto'
-						theme: 'default', // 'default' or custom theme
-					},
 					wallet: {
 						display: 'modal',
 						termsUrl: 'https://...',

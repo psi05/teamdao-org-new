@@ -1,11 +1,11 @@
 //@ts-nocheck
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const NEXT_PUBLIC_MONGODB_URI = process.env.NEXT_PUBLIC_MONGODB_URI;
 
 if (!NEXT_PUBLIC_MONGODB_URI) {
 	throw new Error(
-		"Please define the NEXT_PUBLIC_MONGODB_URI environment variable inside .env.local"
+		'Please define the NEXT_PUBLIC_MONGODB_URI environment variable inside .env.local'
 	);
 }
 
@@ -36,8 +36,8 @@ async function connectDB() {
 		cached.conn = await cached.promise;
 	} catch (e) {
 		cached.promise = null;
-		console.error("MongoDB connection error:", e);
-		throw new Error("MongoDB connection error: " + e.message);
+		console.error('MongoDB connection error:', e);
+		throw new Error('MongoDB connection error: ' + e.message);
 	}
 
 	return cached.conn;
