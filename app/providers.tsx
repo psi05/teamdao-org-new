@@ -1,7 +1,6 @@
 'use client';
 
 import { OnchainKitProvider } from '@coinbase/onchainkit';
-import '@coinbase/onchainkit/styles.css';
 import {
 	connectorsForWallets,
 	darkTheme,

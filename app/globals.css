@@ -31,12 +31,12 @@
 		backdrop-filter: saturate(180%) blur(20px);
 	}
 
-	.blur-me {
+	/* .blur-this {
 		background: rgba(0, 0, 0, 0.6);
 		-webkit-backdrop-filter: saturate(180%) blur(20px);
 		backdrop-filter: saturate(180%) blur(20px);
 		will-change: backdrop-filter;
-	}
+	} */
 
 	.mint-me-btn {
 		background: rgba(0, 0, 0, 0.6);
