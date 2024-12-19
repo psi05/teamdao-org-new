@@ -1,5 +1,5 @@
-import { ILog } from '@/globals';
 import { Log } from '@/models/collections';
+import { ILog } from '@/types';
 import httpStatus from 'http-status-codes';
 import { NextRequest, NextResponse } from 'next/server';
 

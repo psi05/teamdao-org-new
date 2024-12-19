@@ -1,6 +1,3 @@
-import { User } from '@prisma/client';
-import NextAuth from 'next-auth';
-
 import { z } from 'zod';
 
 const IToken = z.object({

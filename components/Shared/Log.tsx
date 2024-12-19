@@ -5,7 +5,7 @@ import Link from 'next/link';
 import emoji from 'react-easy-emoji';
 import { z } from 'zod';
 
-import { ILog } from '@/globals';
+import { ILog } from '@/types';
 import TimeAgo from './TimeAgo';
 
 const Log = ({ log }: { log: z.infer<typeof ILog> }) => {

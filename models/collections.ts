@@ -1,4 +1,4 @@
-import { ILog } from '@/globals';
+import { ILog } from '@/types';
 import { deleteModel, model, models, Schema } from 'mongoose';
 import { z } from 'zod';
 
