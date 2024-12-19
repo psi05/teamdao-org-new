@@ -28,59 +28,59 @@ const queryClient = new QueryClient();
 
 export default function Providers({ children }: { children: ReactNode }) {
 	return (
-		<QueryClientProvider client={queryClient}>
-			<OnchainKitProvider
-				apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
-				chain={base}
-				config={{
-					appearance: {
-						name: 'T.E.A.M',
-						logo: '/logo.png',
-						mode: 'dark',
-						theme: 'default',
+		<OnchainKitProvider
+			apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+			chain={base}
+			config={{
+				appearance: {
+					name: 'T.E.A.M',
+					logo: '/logo.png',
+					mode: 'dark',
+					theme: 'default',
+				},
+				wallet: {
+					display: 'modal',
+				},
+			}}
+		>
+			<WagmiProvider
+				config={createConfig({
+					ssr: true,
+					chains: [arbitrum, base, mainnet, optimism, polygon],
+					storage: createStorage({
+						storage: cookieStorage,
+					}),
+					transports: {
+						[arbitrum.id]: http(),
+						[base.id]: http(),
+						[mainnet.id]: http(),
+						[optimism.id]: http(),
+						[polygon.id]: http(),
 					},
-					wallet: {
-						display: 'modal',
-					},
-				}}
-			>
-				<WagmiProvider
-					config={createConfig({
-						ssr: true,
-						chains: [arbitrum, base, mainnet, optimism, polygon],
-						storage: createStorage({
-							storage: cookieStorage,
-						}),
-						transports: {
-							[arbitrum.id]: http(),
-							[base.id]: http(),
-							[mainnet.id]: http(),
-							[optimism.id]: http(),
-							[polygon.id]: http(),
-						},
-						connectors: connectorsForWallets(
-							[
-								{
-									groupName: 'Recommended',
-									wallets: [rainbowWallet, walletConnectWallet],
-								},
-								{
-									groupName: 'Other Wallets',
-									wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
-								},
-							],
+					connectors: connectorsForWallets(
+						[
 							{
-								appName: 'T.E.A.M DAO',
-								projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
-							}
-						),
-					})}
-				>
+								groupName: 'Recommended',
+								wallets: [rainbowWallet, walletConnectWallet],
+							},
+							{
+								groupName: 'Other Wallets',
+								wallets: [rainbowWallet, metaMaskWallet, coinbaseWallet],
+							},
+						],
+						{
+							appName: 'T.E.A.M DAO',
+							projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
+						}
+					),
+				})}
+			>
+				<QueryClientProvider client={queryClient}>
 					<RainbowKitProvider modalSize='compact' theme={darkTheme()}>
 						{children}
 					</RainbowKitProvider>
-				</WagmiProvider>
-			</OnchainKitProvider>
-		</QueryClientProvider>
+				</QueryClientProvider>
+			</WagmiProvider>
+		</OnchainKitProvider>
 	);
 }
