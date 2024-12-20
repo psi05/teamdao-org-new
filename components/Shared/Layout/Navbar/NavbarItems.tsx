@@ -184,7 +184,7 @@ export default function NavbarItems({
 						animate={{ opacity: 1, y: 0 }}
 						exit={{ opacity: 0, y: -20 }}
 						transition={{ duration: 0.3 }}
-						className='blur-this fixed left-3 right-3 z-[500] mt-20 block rounded-2xl p-4 text-white xl:hidden'
+						className='backdrop-blur-lg bg-black/55 fixed left-3 right-3 z-[500] mt-20 block rounded-2xl p-4 text-white xl:hidden'
 					>
 						<div className='grid grid-cols-2 items-center justify-items-center gap-4 sm:grid-cols-2 md:grid-cols-3'>
 							{navItems.map((item, index) => (

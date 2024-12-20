@@ -6,9 +6,8 @@ import { navItems } from '@/sources/navbarItems';
 import NavbarItems from './NavbarItems';
 
 export default function Navbar() {
-	const { dexPairs, dexPairsLoading, dexPairsError } = DexData();
-	const { BSTokenInfo, BSTokenInfoLoading, BSTokenInfoError } =
-		BlockscoutTokenInfo();
+	const { dexPairs, dexPairsLoading } = DexData();
+	const { BSTokenInfo, BSTokenInfoLoading } = BlockscoutTokenInfo();
 
 	const priceData =
 		!dexPairsLoading && dexPairs?.pairs?.[0]?.priceUsd

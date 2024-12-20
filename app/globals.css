@@ -2,24 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: Matrix;
-	src: url('/fonts/matrix-regular.ttf');
+* {
+	cursor: none;
 }
 
-@font-face {
-	font-family: MatrixBold;
-	src: url('/fonts/matrix-bold.ttf');
+body {
+	background: #000;
+	color: #e5e5e5;
 }
 
-@font-face {
-	font-family: Teamdao;
-	src: url('/fonts/teamdao.otf');
+body::-webkit-scrollbar {
+	display: none;
 }
 
-@font-face {
-	font-family: F1;
-	src: url('/fonts/f1.ttf');
+html {
+	--cursor-color: #29ff2f;
+}
+
+html.dark-mode {
+	--cursor-color: #29ff2f;
 }
 
 @supports (
@@ -46,40 +47,24 @@
 	}
 }
 
-@layer utilities {
-	.text-balance {
-		text-wrap: balance;
-	}
-
-	.no-scrollbar::-webkit-scrollbar {
-		display: none;
-	}
-
-	.no-scrollbar {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
+@font-face {
+	font-family: Matrix;
+	src: url('/fonts/matrix-regular.ttf');
 }
 
-* {
-	cursor: none;
+@font-face {
+	font-family: MatrixBold;
+	src: url('/fonts/matrix-bold.ttf');
 }
 
-body {
-	background: #000;
-	color: #e5e5e5;
+@font-face {
+	font-family: Teamdao;
+	src: url('/fonts/teamdao.otf');
 }
 
-body::-webkit-scrollbar {
-	display: none;
-}
-
-html {
-	--cursor-color: #29ff2f;
-}
-
-html.dark-mode {
-	--cursor-color: #29ff2f;
+@font-face {
+	font-family: F1;
+	src: url('/fonts/f1.ttf');
 }
 
 img.emoji {
@@ -120,4 +105,14 @@ img.emoji {
 		padding-left: 3vw;
 		box-sizing: content-box;
 	}
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+
+	scrollbar-width: none;
 }
