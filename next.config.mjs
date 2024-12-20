@@ -15,6 +15,10 @@ const nextConfig = {
 		externalDir: true,
 		instrumentationHook: true,
 	},
+	webpack: (config) => {
+		config.externals.push('pino-pretty');
+		return config;
+	},
 };
 
 export default nextConfig;
