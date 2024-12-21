@@ -1,11 +1,9 @@
-'use client';
-
 import { utils } from '@/libraries/utils';
+import { ILog } from '@/types';
 import Link from 'next/link';
 import emoji from 'react-easy-emoji';
 import { z } from 'zod';
 
-import { ILog } from '@/types';
 import TimeAgo from './TimeAgo';
 
 const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
@@ -186,55 +184,6 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-			{log?.type === 'bridge' && (
-				<>
-					<div className='flex w-16 flex-grow justify-center text-center'>
-						{emoji(log.flag ?? '')}
-					</div>
-					<div className='w-20 flex-grow text-center'>{log.country}</div>
-					<div className='w-20 flex-grow text-center'>{log.playerNumber}</div>
-					<div className='w-52 flex-grow text-center'>
-						<p className='flex items-center justify-center gap-1'>
-							{emoji('⛩ Bridge')}
-						</p>
-					</div>
-					<div className='w-72 flex-grow text-center xl:w-44'>
-						<span>{utils.formatTokenSymbol(log.tokenIn?.symbol)} </span>
-						<span>{`$${utils.formatNumber(
-							log.amountsIn * parseFloat(log.tokenIn?.priceUSD ?? '1'),
-							true
-						)} `}</span>
-						<span>{`[${utils.formatNumber(log.amountsIn)}]`}</span>
-					</div>
-					<div className='w-72 flex-grow text-center xl:w-44'>
-						<span>{utils.formatTokenSymbol(log.tokenOut?.symbol)} </span>
-						<span>{`$${utils.formatNumber(
-							log.amountsOut * parseFloat(log.tokenOut?.priceUSD ?? '1'),
-							true
-						)} `}</span>
-						<span>{`[${utils.formatNumber(log.amountsOut)}]`}</span>
-					</div>
-					<div className='flex w-32 flex-grow items-center justify-center'>
-						<Link href={`${log.txLink}`} target='_blank'>
-							<p className='flex items-center justify-center gap-1'>
-								{emoji('⛽️')} ${utils.formatNumber(log.txFeeInUsd, true)}{' '}
-								{emoji(`${log.chainEmoji}`)}
-							</p>
-						</Link>
-					</div>
-					<div className='flex w-20 flex-grow justify-center'>
-						<p className='flex items-center gap-1'>
-							{emoji('✅')}
-							{log.seconds}s
-						</p>
-					</div>
-					<div className='w-32 flex-grow text-center'>
-						<p className='text-[#848489]'>
-							<TimeAgo date={log.createdAt} />
-						</p>
-					</div>
-				</>
-			)}
 			{(log?.type === 'manager' ||
 				log?.type === 'player' ||
 				log?.type === 'payroll' ||
@@ -354,50 +303,8 @@ const Log = ({ log }: { log: z.infer<typeof ILog> }) => {
 					</div>
 				</>
 			)}
-			{log?.type === 'game-tapwar' && (
-				<>
-					<div className='flex w-16 flex-grow items-center justify-center'>
-						<p>{emoji(`${log.flag}`)}</p>
-					</div>
-					<div className='w-20 flex-grow text-center'>
-						<p>{log.country}</p>
-					</div>
-					<div className='w-24 flex-grow text-center'>
-						<p>{log.playerNumber}</p>
-					</div>
-					<div className='flex w-52 flex-grow justify-center'>
-						<div className='flex items-center gap-1'>
-							{emoji('👉👈')}
-							<span className='first-letter:uppercase'>Joined Tap of War</span>
-						</div>
-					</div>
-					<div className='w-72 flex-grow text-center xl:w-44'>
-						<p className='font-light text-white/30'>-</p>
-					</div>
-					<div className='w-72 flex-grow text-center xl:w-44'>
-						<p className='font-light text-white/30'>-</p>
-					</div>
-					<div className='w-32 flex-grow'>
-						<Link href={`${log.txLink}`} target='_blank'>
-							<p className='flex items-center justify-center gap-1'>
-								{emoji('⛽️')} ${utils.formatNumber(log.txFeeInUsd ?? 0, true)}{' '}
-								{emoji(`${log.chainEmoji}`)}
-							</p>
-						</Link>
-					</div>
-					<div className='w-16 flex-grow'>
-						<div className='flex items-center justify-center gap-1'>
-							{emoji('✅')}1s
-						</div>
-					</div>
-					<div className='w-32 flex-grow text-center'>
-						<p className='text-[#848489]'>
-							<TimeAgo date={log.createdAt} />
-						</p>
-					</div>
-				</>
-			)}
 		</>
 	);
 };
+
 export default Log;

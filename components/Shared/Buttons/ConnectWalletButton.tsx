@@ -16,7 +16,7 @@ import {
 import { Wallet2Icon } from 'lucide-react';
 import Image from 'next/image';
 
-export default function ConnectWalletBTN() {
+const ConnectWalletButton = () => {
 	return (
 		<div>
 			<Wallet>
@@ -56,4 +56,6 @@ export default function ConnectWalletBTN() {
 			</Wallet>
 		</div>
 	);
-}
+};
+
+export default ConnectWalletButton;

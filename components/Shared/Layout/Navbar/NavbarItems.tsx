@@ -8,7 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
-import ConnectWalletBTN from '../../Buttons/ConnectWalletBtn';
+import ConnectWalletButton from '../../Buttons/ConnectWalletButton';
 
 const createAlternateNavbarItems = ({
 	navbarItems,
@@ -172,7 +172,7 @@ export default function NavbarItems({
 						</div>
 
 						<div className='hidden items-center space-x-2 md:flex'>
-							<ConnectWalletBTN />
+							<ConnectWalletButton />
 						</div>
 					</div>
 				</div>
@@ -202,7 +202,7 @@ export default function NavbarItems({
 								</Link>
 							))}
 							<div className='col-span-2 flex items-center space-x-2 md:col-span-3'>
-								<ConnectWalletBTN />
+								<ConnectWalletButton />
 							</div>
 						</div>
 					</motion.div>

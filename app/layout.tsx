@@ -2,7 +2,6 @@ import Footer from '@/components/Shared/Layout/Footer/Footer';
 import Navbar from '@/components/Shared/Layout/Navbar/Navbar';
 import FONTS from '@/configurations/fonts';
 import METADATA from '@/configurations/metadata';
-import '@coinbase/onchainkit/styles.css';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Script from 'next/script';

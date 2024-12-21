@@ -26,7 +26,7 @@ const PhoneModal = ({
 
 	return (
 		<div
-			className={`modal blur-this fixed inset-0 z-50 flex items-center justify-center transition-all duration-100 ease-in ${
+			className={`modal blur-me fixed inset-0 z-50 flex items-center justify-center transition-all duration-100 ease-in ${
 				showModal ? 'opacity-100' : 'opacity-0'
 			} ${visible ? '' : 'hidden'}`}
 			onClick={() => setShowModal(false)}
@@ -59,7 +59,7 @@ const PhoneModal = ({
 					</div>
 				</div>
 				<Image
-					src={`/assets/img/mobile/${imgSrc}`}
+					src={`/images/${imgSrc}`}
 					alt='Modal Image'
 					width={1080}
 					height={1080}

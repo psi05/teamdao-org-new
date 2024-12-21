@@ -1,6 +1,7 @@
 'use client';
 
 import { OnchainKitProvider } from '@coinbase/onchainkit';
+import '@coinbase/onchainkit/styles.css';
 import {
 	connectorsForWallets,
 	darkTheme,
@@ -14,6 +15,7 @@ import {
 	walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryStreamedHydration } from '@tanstack/react-query-next-experimental';
 import { ReactNode } from 'react';
 import {
 	cookieStorage,
@@ -70,15 +72,17 @@ export default function Providers({ children }: { children: ReactNode }) {
 						],
 						{
 							appName: 'T.E.A.M DAO',
-							projectId: '3bce97cc86ca95ddd9a7e2a2e61245e2',
+							projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
 						}
 					),
 				})}
 			>
 				<QueryClientProvider client={queryClient}>
-					<RainbowKitProvider modalSize='compact' theme={darkTheme()}>
-						{children}
-					</RainbowKitProvider>
+					<ReactQueryStreamedHydration>
+						<RainbowKitProvider modalSize='compact' theme={darkTheme()}>
+							{children}
+						</RainbowKitProvider>
+					</ReactQueryStreamedHydration>
 				</QueryClientProvider>
 			</WagmiProvider>
 		</OnchainKitProvider>

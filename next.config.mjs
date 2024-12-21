@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	staticPageGenerationTimeout: 180,
-	reactStrictMode: false,
 	images: {
-		unoptimized: true,
 		remotePatterns: [
 			{
 				protocol: 'https',
@@ -16,7 +14,9 @@ const nextConfig = {
 		instrumentationHook: true,
 	},
 	webpack: (config) => {
-		config.externals.push('pino-pretty');
+		config.externals.push(
+			'pino-pretty' /* add any other modules that might be causing the error */
+		);
 		return config;
 	},
 };

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const IToken = z.object({
 	name: z.string().nullable(),
@@ -12,7 +12,7 @@ const IToken = z.object({
 });
 
 const ILogPresale = z.object({
-	type: z.literal('presale'),
+	type: z.literal("presale"),
 	flag: z.string(),
 	country: z.string(),
 	playerNumber: z.string(),
@@ -34,7 +34,7 @@ const ILogPresale = z.object({
 });
 
 const ILogNewPlayer = z.object({
-	type: z.literal('new-player'),
+	type: z.literal("new-player"),
 	userId: z.number(),
 	flag: z.optional(z.string()),
 	country: z.optional(z.string()),
@@ -44,8 +44,8 @@ const ILogNewPlayer = z.object({
 });
 
 const ILogETF = z.object({
-	type: z.literal('etf'),
-	txType: z.union([z.literal('sell'), z.literal('buy')]),
+	type: z.literal("etf"),
+	txType: z.union([z.literal("sell"), z.literal("buy")]),
 	name: z.string(),
 	playerNumber: z.string(),
 	userId: z.number(),
@@ -65,28 +65,8 @@ const ILogETF = z.object({
 });
 
 const ILogSniper = z.object({
-	type: z.literal('sniper'),
-	txType: z.union([z.literal('sell'), z.literal('buy')]),
-	amountsIn: z.number(),
-	amountsOut: z.number(),
-	tokenIn: IToken,
-	tokenOut: IToken,
-	seconds: z.string(),
-	txFee: z.number(),
-	txFeeInUsd: z.number(),
-	txLink: z.string(),
-	txHash: z.string(),
-	chainId: z.string(),
-	chainEmoji: z.string(),
-	flag: z.string(),
-	country: z.string(),
-	playerNumber: z.string(),
-	createdAt: z.optional(z.date()),
-	updatedAt: z.optional(z.date()),
-});
-
-const ILogBridge = z.object({
-	type: z.literal('bridge'),
+	type: z.literal("sniper"),
+	txType: z.union([z.literal("sell"), z.literal("buy")]),
 	amountsIn: z.number(),
 	amountsOut: z.number(),
 	tokenIn: IToken,
@@ -106,12 +86,8 @@ const ILogBridge = z.object({
 });
 
 const ILogBuySell = z.object({
-	type: z.union([
-		z.literal('trade-team'),
-		z.literal('ai'),
-		z.literal('pirate'),
-	]),
-	txType: z.union([z.literal('sell'), z.literal('buy')]),
+	type: z.union([z.literal("trade-team"), z.literal("ai"), z.literal("pirate")]),
+	txType: z.union([z.literal("sell"), z.literal("buy")]),
 	amountsIn: z.number(),
 	amountsOut: z.number(),
 	tokenIn: IToken,
@@ -132,13 +108,13 @@ const ILogBuySell = z.object({
 
 const ILogRewards = z.object({
 	type: z.union([
-		z.literal('payroll'),
-		z.literal('reward'),
-		z.literal('gift'),
-		z.literal('presale'),
-		z.literal('seriesa'),
-		z.literal('manager'),
-		z.literal('player'),
+		z.literal("payroll"),
+		z.literal("reward"),
+		z.literal("gift"),
+		z.literal("presale"),
+		z.literal("seriesa"),
+		z.literal("manager"),
+		z.literal("player"),
 	]),
 	playerNumber: z.string(),
 	flag: z.string(),
@@ -159,7 +135,7 @@ const ILogRewards = z.object({
 });
 
 const ILogSubsribe = z.object({
-	type: z.literal('subscribe'),
+	type: z.literal("subscribe"),
 	playerNumber: z.string(),
 	flag: z.string(),
 	country: z.string(),
@@ -173,17 +149,13 @@ const ILogSubsribe = z.object({
 	txHash: z.string(),
 	chainId: z.string(),
 	chainEmoji: z.string(),
-	tier: z.union([
-		z.literal('Standard'),
-		z.literal('Super'),
-		z.literal('Supreme'),
-	]),
+	tier: z.union([z.literal("Standard"), z.literal("Super"), z.literal("Supreme")]),
 	createdAt: z.optional(z.date()),
 	updatedAt: z.optional(z.date()),
 });
 
 const ILogGameTapwar = z.object({
-	type: z.literal('game-tapwar'),
+	type: z.literal("game-tapwar"),
 	userId: z.number(),
 	flag: z.string(),
 	country: z.string(),
@@ -217,21 +189,4 @@ export const ILog = z.union([
 	ILogSubsribe,
 	ILogPresale,
 	ILogGameTapwar,
-	ILogBridge,
 ]);
-
-declare global {
-	namespace NodeJS {
-		interface ProcessEnv {
-			[key: string]: string;
-		}
-	}
-
-	type ETF = {
-		'name': string;
-		'24hour_change': string;
-		'volume': string;
-		'marketCap': number;
-		'logo': string;
-	};
-}

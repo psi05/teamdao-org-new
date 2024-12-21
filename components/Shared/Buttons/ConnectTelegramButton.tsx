@@ -1,4 +1,4 @@
-export default function ConnectTGBTN() {
+const ConnectTelegramButton = () => {
 	return (
 		<div className='flex h-[45px] items-center rounded-lg border-2 border-teamdao_green bg-black text-white outline-none hover:bg-black'>
 			<div className='flex items-center space-x-2 px-3'>
@@ -15,4 +15,6 @@ export default function ConnectTGBTN() {
 			</div>
 		</div>
 	);
-}
+};
+
+export default ConnectTelegramButton;
