@@ -72,7 +72,8 @@ export default function Providers({ children }: { children: ReactNode }) {
 						],
 						{
 							appName: 'T.E.A.M DAO',
-							projectId: process.env.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID,
+							projectId: process.env
+								.NEXT_PUBLIC_RAINBOWKIT_PROJECT_ID as string,
 						}
 					),
 				})}
