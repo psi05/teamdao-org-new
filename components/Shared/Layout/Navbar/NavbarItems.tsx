@@ -74,7 +74,7 @@ export default function NavbarItems({
 
 	return (
 		<>
-			<div className='blur-this fixed top-0 z-[200] h-[64px] w-full border-b-4 border-teamdao_green'>
+			<div className='bg-black bg-opacity-60 backdrop-saturate-180 backdrop-blur-20px fixed top-0 z-[200] h-[64px] w-full border-b-4 border-teamdao_green'>
 				<div className='relative z-50 flex items-center'>
 					<Link
 						href='/'
